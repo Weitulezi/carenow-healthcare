@@ -2,7 +2,7 @@ import React, {memo} from 'react'
 import { createListCollection, Portal, Select, SelectValueChangeDetails } from '@chakra-ui/react'
 import { LucideProps} from 'lucide-react'
 
-interface ItemInterface {
+interface SelectItemIterface {
     label: string
     value: string
 }
@@ -10,7 +10,7 @@ interface ItemInterface {
 interface MultipleSelectProps {
     title: string
     LabelIcon : React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
-    selections: ItemInterface[]
+    selections: SelectItemIterface[]
     setState: React.Dispatch<React.SetStateAction<string[]>>
     state: string[]
 }
@@ -20,12 +20,12 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
         items: selections
     })
 
-    const handleSelection = (details : SelectValueChangeDetails<ItemInterface>) => {
+    const handleSelection = (details : SelectValueChangeDetails<SelectItemIterface>) => {
         setState([...details.value])
     }
       
     return (
-        <Select.Root multiple collection={frameworks} onValueChange={(details: SelectValueChangeDetails<ItemInterface>) => handleSelection(details)}>
+        <Select.Root multiple collection={frameworks} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => handleSelection(details)}>
             <Select.HiddenSelect/>
             <Select.Label display="flex" alignItems="center" gap="6px" fontSize="18px" fontWeight="bold" color="#646464" marginBottom="4px">
                 <LabelIcon size={20}/>
