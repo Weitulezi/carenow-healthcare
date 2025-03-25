@@ -12,7 +12,7 @@ const Navigation = () => {
             </Box>
             <HStack>
                 <Flex justifyContent="center" alignItems="center" gapX="6px">
-                    <Button as="button" variant="outline" backgroundColor="white" fontSize={14} padding="4px 10px" fontWeight="bold" borderRadius="8px">Add Entry</Button>
+                    <Button as="button" variant="outline" backgroundColor="white" color="#646464" height="33px" shadow="2xl" fontSize={14} padding="4px 10px" fontWeight="bold" borderRadius="8px">Add Entry</Button>
                 </Flex>
             </HStack>
         </Flex>
