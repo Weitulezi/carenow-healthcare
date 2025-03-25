@@ -48,7 +48,7 @@ const TreatmentForm = () => {
                         <MultipleSelect title={"Prescription"} selections={prescriptionData} LabelIcon={ClipboardPlus} state={prescriptions} setState={setPrescriptions}/>
                         <TextInput type="date" title='Schedule' state={schedule} setState={setSchedule} LabelIcon={Calendar1Icon}/>
                         <TextInput  type="number" title="Treatment Cost" state={treatmentCost} setState={setTreatmentCost} LabelIcon={Wallet}/>
-                        <Button width="fit-content" paddingX="12px" height="34px" placeSelf="end" borderRadius="6px" bg="#FF6889" fontSize="18px" fontWeight="semibold" shadow="lg">
+                        <Button width="fit-content" paddingX="12px" height="34px" placeSelf="end" borderRadius="6px" bg="#FF6889" fontSize="16px" fontWeight="semibold" shadow="lg">
                             Create Entry
                         </Button>
                     </Box>

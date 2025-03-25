@@ -27,14 +27,14 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
     return (
         <Select.Root multiple collection={frameworks} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => handleSelection(details)}>
             <Select.HiddenSelect/>
-            <Select.Label display="flex" alignItems="center" gap="6px" fontSize="18px" fontWeight="bold" color="#646464" marginBottom="4px">
+            <Select.Label display="flex" alignItems="center" gap="6px" fontSize="16px" fontWeight="bold" color="#646464" marginBottom="4px">
                 <LabelIcon size={20}/>
                 <span>
                     {title}
                 </span>
             </Select.Label>
             <Select.Control >
-                <Select.Trigger width={["100%","100%", "100%","480px"]} height="40px"  border="1px solid #BEBEBE" cursor="pointer">
+                <Select.Trigger width={["100%","100%", "100%","480px"]} height="40px"  border="1px solid #BEBEBE" cursor="pointer" outlineColor="blue.400" outlineWidth="2px">
                 <Select.ValueText marginLeft="10px"  placeholder={`Select ${title}`} />
                 </Select.Trigger>
                 <Select.IndicatorGroup>
@@ -43,7 +43,7 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
             </Select.Control>
             <Portal>
                 <Select.Positioner >
-                <Select.Content padding="8px" fontSize="16px" color="#464646">
+                <Select.Content padding="8px" fontSize="16px" color="#464646" border="1px solid #bebebe">
                     {frameworks.items.map((framework) => (
                     <Select.Item item={framework} key={framework.value} padding="8px" borderRadius="4px" cursor="pointer">
                         {framework.label}

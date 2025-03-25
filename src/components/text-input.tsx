@@ -15,7 +15,7 @@ interface TextInputProps {
 const TextInput = ({type, title, state, setState, LabelIcon}: TextInputProps) => {
   return (
     <Box display="flex" flexDirection="column" gap="4px" width={["100%","100%", "100%","480px"]} >
-        <label htmlFor="name" style={{fontSize: "18px", fontWeight:"bold", color: "#646464", display: 'flex', alignItems: "center", gap: "6px"}}>
+        <label htmlFor="name" style={{fontSize: "16px", fontWeight:"bold", color: "#646464", display: 'flex', alignItems: "center", gap: "6px"}}>
             <LabelIcon size={20}/>
             <span>
                 {title}
