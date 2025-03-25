@@ -5,7 +5,7 @@ import { Box, Button, Flex } from '@chakra-ui/react'
 import { Calendar1Icon, ClipboardPlus, NotepadText, User, Wallet } from 'lucide-react'
 import MultipleSelect from './multiple-select'
 import { descriptionData, prescriptionData } from '../dummy-data'
-import TextInput from './TextInput'
+import TextInput from './text-input'
 
 
 const TreatmentForm = () => {
@@ -27,7 +27,7 @@ const TreatmentForm = () => {
         justifyContent="center" 
         height={["fit-content","fit-content", "fit-content","100vh"]}
     >
-            <Flex width={["90%","90%", "90%","fit"]} display="flex" flexDir={["column", "column", "row"]} justifyContent="center" gap="44px" paddingY="44px">
+            <Flex width={["90%","90%", "90%","fit"]} display="flex" flexDir={["column", "column", "row"]} justifyContent="center" gap="44px" paddingY="64px">
                 <Box width="full" display="flex" flexDir="column" gap="24px">
                     <TextInput type="text" title="Patient Name" state={patientName} setState={setPatientName} LabelIcon={User}/>
                     <MultipleSelect title={"Description"} selections={descriptionData} LabelIcon={NotepadText} state={descriptions} setState={setDescriptions}/>
