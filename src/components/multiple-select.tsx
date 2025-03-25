@@ -34,7 +34,7 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
                 </span>
             </Select.Label>
             <Select.Control >
-                <Select.Trigger width="480px" height="40px"  border="1px solid #BEBEBE" cursor="pointer">
+                <Select.Trigger width={["100%","100%", "100%","480px"]} height="40px"  border="1px solid #BEBEBE" cursor="pointer">
                 <Select.ValueText marginLeft="10px"  placeholder={`Select ${title}`} />
                 </Select.Trigger>
                 <Select.IndicatorGroup>
