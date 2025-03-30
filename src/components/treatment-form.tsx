@@ -59,7 +59,6 @@ const TreatmentForm = () => {
 
     const handleSubmit = (e:  React.FormEvent<HTMLDivElement>) => {
         e.preventDefault()
-        console.log(patientId, treatmentCost, descriptions, prescriptions, schedule)
         if(!patientId || !treatmentCost || descriptions.length == 0 || prescriptions.length == 0 || !schedule) {
             setErrorMessage("Field cannot be empty")
             return
