@@ -1,3 +1,18 @@
+const usersData = [
+    {
+        user_id: 1,
+        name: "Max Verstappen",
+    },
+    {
+        user_id: 2,
+        name: "Donquixotte Doflamingo",
+    },
+    {
+        user_id: 3,
+        name: "Lewis Hamilton",
+    }
+]
+
 const descriptionData = [
     { label: "Fever", value: "fever" },
     { label: "Nausea", value: "nausea" },
@@ -12,4 +27,4 @@ const prescriptionData = [
 ]
 
 
-export {descriptionData, prescriptionData}
+export {descriptionData, prescriptionData, usersData}

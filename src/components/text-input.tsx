@@ -11,7 +11,6 @@ interface TextInputProps {
     state: string
 }
 
-
 const TextInput = ({type, title, state, setState, LabelIcon}: TextInputProps) => {
   return (
     <Box display="flex" flexDirection="column" gap="4px" width={["100%","100%", "100%","480px"]} >
@@ -21,7 +20,7 @@ const TextInput = ({type, title, state, setState, LabelIcon}: TextInputProps) =>
                 {title}
             </span>
         </label>
-        <Input width="full" type={type} outlineColor="blue.400" outlineWidth="2px" placeContent={title} paddingX="10px" borderRadius="6px" borderColor="#BEBEBE" value={state} onChange={e => setState(e.target.value)}/>
+        <Input required width="full" type={type} outlineColor="blue.400" outlineWidth="2px" placeContent={title} paddingX="10px" borderRadius="6px" borderColor="#BEBEBE" value={state} onChange={e => setState(e.target.value)}/>
     </Box>
   )
 }

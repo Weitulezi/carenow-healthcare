@@ -4,28 +4,33 @@ import { LucideProps} from 'lucide-react'
 
 interface SelectItemIterface {
     label: string
-    value: string
+    value: string | number
 }
 
-interface MultipleSelectProps {
+interface SelectsInputProps {
+    isMultiple: boolean
     title: string
     LabelIcon : React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
     selections: SelectItemIterface[]
-    setState: React.Dispatch<React.SetStateAction<string[]>>
-    state: string[]
+    setState: React.Dispatch<React.SetStateAction<string[] | string>>
 }
 
-const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setState}: MultipleSelectProps) {
-    const frameworks = createListCollection({
+const SelectsInput = memo(function ({isMultiple, selections, title, LabelIcon, setState}: SelectsInputProps) {
+    const collections = createListCollection({
         items: selections
     })
 
-    const handleSelection = (details : SelectValueChangeDetails<SelectItemIterface>) => {
-        setState([...details.value])
+    const updateSelection = (details : SelectValueChangeDetails<SelectItemIterface>) => {
+        console.log([...details.value])
+        if (isMultiple) {
+            setState([...details.value])
+        } else {
+            setState(details.value[0])
+        }
     }
       
     return (
-        <Select.Root multiple collection={frameworks} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => handleSelection(details)}>
+        <Select.Root multiple={isMultiple}  collection={collections} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => updateSelection(details)}>
             <Select.HiddenSelect/>
             <Select.Label display="flex" alignItems="center" gap="6px" fontSize="16px" fontWeight="bold" color="#646464" marginBottom="4px">
                 <LabelIcon size={20}/>
@@ -44,9 +49,9 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
             <Portal>
                 <Select.Positioner >
                 <Select.Content padding="8px" fontSize="16px" color="#464646" border="1px solid #bebebe">
-                    {frameworks.items.map((framework) => (
-                    <Select.Item item={framework} key={framework.value} padding="8px" borderRadius="4px" cursor="pointer">
-                        {framework.label}
+                    {collections.items.map((item) => (
+                    <Select.Item item={item} key={item.value} padding="8px" borderRadius="4px" cursor="pointer">
+                        {item.label}
                         <Select.ItemIndicator />
                     </Select.Item>
                     ))}
@@ -59,4 +64,4 @@ const MultipleSelect = memo(function ({selections, title, LabelIcon, state, setS
 
 
 
-export default MultipleSelect
+export default SelectsInput
