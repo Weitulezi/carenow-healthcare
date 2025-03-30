@@ -36,6 +36,7 @@ const TreatmentForm = () => {
     const [message, setMessage] = useState<string>("")
     const [errorMessage, setErrorMessage] = useState<string>("")
 
+    // Fetching the dropdown data (users, descriptions, prescriptions)
     useEffect(() => {
         fetch(`http://localhost:3001/api/users`)
             .then(res => res.json())
@@ -57,6 +58,7 @@ const TreatmentForm = () => {
     }, [])
 
 
+    // Handle form submission
     const handleSubmit = (e:  React.FormEvent<HTMLDivElement>) => {
         e.preventDefault()
         if(!patientId || !treatmentCost || descriptions.length == 0 || prescriptions.length == 0 || !schedule) {
@@ -69,6 +71,8 @@ const TreatmentForm = () => {
         !isValidCost && setErrorMessage("not a valid cost value")
 
         setErrorMessage("")
+
+        // API request to create treatment
         fetch(`http://localhost:3001/api/treatments`, {
             method: "POST",
             headers: {
