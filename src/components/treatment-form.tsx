@@ -27,10 +27,10 @@ const TreatmentForm = () => {
     const [descriptionList, setDescriptionList] = useState<DescriptionInterface[]>([])
     const [prescriptionList, setPrescriptionList] = useState<PrescriptionInterface[]>([])
 
-    const [patientId, setPatientId] = useState<string[] | string>("")
+    const [patientId, setPatientId] = useState<string[]>([])
     const [treatmentCost, setTreatmentCost] = useState<string>("")
-    const [descriptions, setDescriptions] = useState<string[] | string>([])
-    const [prescriptions, setPrescriptions] = useState<string[] |string>([])
+    const [descriptions, setDescriptions] = useState<string[]>([])
+    const [prescriptions, setPrescriptions] = useState<string[]>([])
     const [schedule, setSchedule] = useState<string>("")
 
     const [message, setMessage] = useState<string>("")
@@ -76,7 +76,7 @@ const TreatmentForm = () => {
                 'Content-Type': 'application/json'
               },
             body: JSON.stringify({
-                user_id: Number(patientId),
+                user_id: Number(patientId[0]),
                 descriptions,
                 prescriptions,
                 cost: Number(treatmentCost),
@@ -91,6 +91,11 @@ const TreatmentForm = () => {
             if(res.status === 201) {
                 setErrorMessage("")
                 setMessage("user treatment is successfully created")
+                setPatientId([])
+                setDescriptions([])
+                setPrescriptions([])
+                setTreatmentCost("")
+                setSchedule("")
             }
         })
           
@@ -105,7 +110,9 @@ const TreatmentForm = () => {
             alignItems="center"
             flexDir="column"
             height={["fit-content","fit-content", "fit-content", "fit-content"]}>
-                <Text as="h3" py="40px" color={errorMessage ? "red" : message && "green.600"} fontWeight="bold">{errorMessage ? errorMessage : message && message}</Text> 
+                <Box h={["80px","100px","100px","100px"]}>
+                    <Text as="h3" py={["30px","40px","40px"]} color={errorMessage ? "red" : message && "green.600"} fontWeight="bold">{errorMessage ? errorMessage : message}</Text>                     
+                </Box>
                 <Grid  
                     as="form"
                     onSubmit={(e) => handleSubmit(e)}
@@ -125,6 +132,7 @@ const TreatmentForm = () => {
                                 title={"Patient Name"} 
                                 selections={userList.map(user => ({label: user.name, value: user.user_id}))} 
                                 LabelIcon={User} 
+                                state={patientId}
                                 setState={setPatientId}
                             />
                             <SelectsInput 
@@ -132,6 +140,7 @@ const TreatmentForm = () => {
                                 title={"Description"} 
                                 selections={descriptionList.map(item => ({label: item.name, value: item.description_id}))} 
                                 LabelIcon={NotepadText} 
+                                state={descriptions}
                                 setState={setDescriptions}
                             />
                         </Box>
@@ -143,6 +152,7 @@ const TreatmentForm = () => {
                                 title={"Prescription"} 
                                 selections={prescriptionList.map(item => ({label: item.name, value: item.prescription_id}))} 
                                 LabelIcon={ClipboardPlus}
+                                state={prescriptions}
                                 setState={setPrescriptions}
                             />
                             <TextInput 

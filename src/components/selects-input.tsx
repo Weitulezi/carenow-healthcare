@@ -12,25 +12,21 @@ interface SelectsInputProps {
     title: string
     LabelIcon : React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
     selections: SelectItemIterface[]
-    setState: React.Dispatch<React.SetStateAction<string[] | string>>
+    setState: React.Dispatch<React.SetStateAction<string[]>>
+    state: string[]
 }
 
-const SelectsInput = memo(function ({isMultiple, selections, title, LabelIcon, setState}: SelectsInputProps) {
+const SelectsInput = memo(function ({isMultiple, selections, title, LabelIcon, state, setState}: SelectsInputProps) {
     const collections = createListCollection({
         items: selections
     })
 
     const updateSelection = (details : SelectValueChangeDetails<SelectItemIterface>) => {
-        console.log([...details.value])
-        if (isMultiple) {
-            setState([...details.value])
-        } else {
-            setState(details.value[0])
-        }
+        setState([...details.value])
     }
       
     return (
-        <Select.Root multiple={isMultiple}  collection={collections} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => updateSelection(details)}>
+        <Select.Root multiple={isMultiple} value={state} collection={collections} onValueChange={(details: SelectValueChangeDetails<SelectItemIterface>) => updateSelection(details)}>
             <Select.HiddenSelect/>
             <Select.Label display="flex" alignItems="center" gap="6px" fontSize="16px" fontWeight="bold" color="#646464" marginBottom="4px">
                 <LabelIcon size={20}/>
