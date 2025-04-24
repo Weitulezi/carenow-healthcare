@@ -30,7 +30,6 @@ const Page = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLDivElement>) => {
     e.preventDefault();
-    console.log(nameInput);
     setNameParam(nameInput);
   };
 
@@ -61,7 +60,7 @@ const Page = () => {
           <TextInput
             required={false}
             type="text"
-            title="patient name"
+            title="Patient name"
             state={nameInput}
             setState={setNameInput}
             LabelIcon={User}
